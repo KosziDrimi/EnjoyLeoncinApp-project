@@ -30,4 +30,4 @@ class Reservation(models.Model):
     email_text_two = models.TextField(default=text_two, verbose_name="Wiadomość e-mail II")
 
     def __str__(self):
-        return f"""Rezerwacja ID {self.id}: {self.user} -> {self.datetime} -> {self.duration}"""
+        return f"""Rezerwacja ID {self.id}: {self.user} -> {self.datetime}"""

@@ -133,6 +133,10 @@ def tours(request):
     return render(request, 'nadwislanin/tours.html')
 
 
+def info(request):
+    return render(request, 'nadwislanin/info.html')
+
+
 def rules(request):
     return render(request, 'nadwislanin/rules.html')
 

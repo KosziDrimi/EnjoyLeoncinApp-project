@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 tour_choices = [('1', 'Mochty-smok tajemnice i legendy'),
-                ('2', 'Kierunek Leoncin na styku trzech kultur'),
-                ('3', 'Spichlerz - Modlin widziany z Narwi')]
+                ('2', 'Ruiny spichlerza widziane z Narwi'),
+                ('3', 'Kierunek Leoncin na styku trzech kultur')]
 
 
 text_one = 'Dziękujemy za zainteresowanie rezerwacją rejsu Nadwiślaninem. \n' \

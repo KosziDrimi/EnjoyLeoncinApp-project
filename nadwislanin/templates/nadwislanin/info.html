@@ -1,0 +1,38 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <a class="btn btn-warning mt-2 mb-4" href="{% url 'login' %}">Zaloguj się, aby dokonać rezerwacji!</a>
+            <img src="{% static 'nadwislanin/gallery_2.jpg' %}" width="504" height="378">
+        </div>
+        <div class="col-md-6">
+            <div class="card mt-2">
+                <div class="card-header fw-bold">Informacje praktyczne</div>
+                <div class="card-body">
+                    <div class="row">
+                        <p>Czas trwania rejsu w zależności od warunków na rzece - od 1,5 do 2 godzin.</p>
+                        <p>Pływamy od kwietnia do października:<br>- w tygodniu od 15.00 do zmroku,<br>- w weekendy od 10.00 do zmroku.</p>
+                        <p>Liczba osób na pokładzie - 12 ze sternikiem.</p>
+                        <p>Wsiadamy w miejscu „Modlin Plaża” -<br>ul. Mieszka I 6A, Nowy Dwór Mazowiecki<br>
+                            Podczas parkowania i korzystania z infrastruktury „Modlin Plaża”<br>obowiązuje regulamin właściciela miejsca.</p>
+                        <p>Cena wynajmu łodzi za rejs ze sternikiem - 500 zł.</p>
+                        <p>Płatność na konto:<br>Stowarzyszenie Enjoy Leoncin<br>pl. R. Kobendzy 3, 05-155 Leoncin<br>
+                            Numer konta: 63 8011 0008 0040 0409 6821 0001</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-warning" href="{% url 'rules' %}">Regulamin rejsów</a>
+                    <a class="btn btn-warning" href="{% url 'rodo' %}">RODO</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

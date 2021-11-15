@@ -1,0 +1,26 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+
+
+
+        <div class="row">
+            <div class="col text-center">
+                <h2>Witaj {{ name|title }}!</h2>
+                <h4>Dziękujemy za zainteresowanie rezerwacją Nadwiślanina</h4>
+                <h4>w dniu <span class="fw-bold">{{ datetime|date }}</span> o godzinie <span class="fw-bold">{{ datetime|time }}</span>.</h4>
+                <h6 class="mb-4">Sprawdzimy możliwość zorganizowania rejsu i prześlemy szczegóły na podany adres email:
+                  <span class="fst-italic">{{ email }}</span>.</h6>
+                <img src="{% static 'nadwislanin/logo_bw.jpg' %}" width="390.5" height="397">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-end">
+                <a class="btn btn-warning" href="{% url 'guest_page' %}">Lista moich zapytań</a>
+            </div>
+        </div>
+
+
+
+{% endblock %}

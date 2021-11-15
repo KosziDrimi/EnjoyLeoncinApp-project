@@ -1,0 +1,39 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+
+
+        <h5>Moje zapytania:</h5>
+		
+        <div class="row mt-4">
+            <div class="col-md-5">
+                {% for res in reservations %}
+                <div class="card border-warning mb-3">
+                    <div class="card-header py-1">ID: {{res.id}}</div>
+                    <div class="card-body">
+                        <ul class="card-text">
+                            <li>Data: {{res.datetime|date }}</li>
+                            <li>Godzina: {{res.datetime|time}}</li>
+                            <li>Wycieczka: {{res.get_tour_display }} </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer py-0 text-end">
+                        {% if res.confirmation %}
+                        <p>Status: <strong>rezerwacja</strong></p>
+                        {% else %}
+                        <p>Status: <strong>zapytanie</strong></p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6 text-end">
+                <img src="{% static 'nadwislanin/front.jpg' %}" width="504" height="378">
+            </div>
+        </div>
+
+
+
+{% endblock %}

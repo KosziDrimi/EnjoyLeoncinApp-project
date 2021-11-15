@@ -1,0 +1,35 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+    {% if form.errors %}
+    <h6 class="fst-italic mx-2 mb-4">Należy wprowadzić poprawne dane.</h6>
+    {% endif %}
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="card">
+                <div class="card-header fw-bold">
+                    Rejestracja nowego użytkownika:
+                </div>
+                <div class="card-body ">
+                <form action = "{% url 'register' %}" method = "POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-warning">Zarejestruj</button>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+	
+
+{% endblock %}

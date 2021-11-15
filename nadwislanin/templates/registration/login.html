@@ -1,0 +1,50 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+    <div class="row">
+        <div class="col-md-6 mx-4 mb-3">
+            {% if next %}
+            <h6 class="fst-italic mx-2">Strona dostępna po zalogowaniu.</h6>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mx-4">
+            <div class="card">
+                <div class="card-header fw-bold">
+                   Prosimy o zalogowanie się:
+                </div>
+                <div class="card-body">
+                    <form action = "{% url 'login' %}" method = "POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-warning">Zaloguj</button>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header fw-bold">
+                    Zarejestruj się, jeśli jeszcze nie masz konta.
+                </div>
+                <div class="card-footer text-end">
+                    <a href = "{% url 'register' %}" class="btn btn-warning">Zarejestruj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

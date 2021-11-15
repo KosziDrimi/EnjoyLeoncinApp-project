@@ -1,0 +1,85 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+    <div class="row justify-content-end mb-4">
+        <div class="col-md-2">
+            {% if user.is_superuser %}
+            <a class="btn btn-warning" href="{% url 'list' %}">Lista wszystkich zapytań</a>
+            {% else %}
+            <a class="btn btn-warning" href="{% url 'guest_page' %}">Lista moich zapytań</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-7">
+            <div class="card">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                <div class="card-header fw-bold">
+                    Prosimy o wypełnienie szczegółów zapytania:
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                {{ form.email|as_crispy_field }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.datetime|as_crispy_field }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.tour|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form.feedback|as_crispy_field }}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-warning">Prześlij zapytanie</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-5 text-end">
+            <img src="{% static 'nadwislanin/logo.jpg' %}" width="400" height="400">
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header fw-bold">Informacje praktyczne</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Czas trwania rejsu w zależności od warunków na rzece - od 1,5 do 2 godzin.</p>
+                    <p>Pływamy od kwietnia do października:<br>- w tygodniu od 15.00 do zmroku,<br>- w weekendy od 10.00 do zmroku.</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Liczba osób na pokładzie - 12 ze sternikiem.</p>
+                    <p>Wsiadamy w miejscu „Modlin Plaża” -<br>ul. Mieszka I 6A, Nowy Dwór Mazowiecki<br>
+                        Podczas parkowania i korzystania z infrastruktury „Modlin Plaża” obowiązuje regulamin właściciela miejsca.</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Cena wynajmu łodzi za rejs ze sternikiem - 500 zł.</p>
+                    <p>Płatność na konto:<br>
+                    Stowarzyszenie Enjoy Leoncin<br>pl. R. Kobendzy 3, 05-155 Leoncin<br>
+                    Numer konta: 63 8011 0008 0040 0409 6821 0001</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-warning" href="{% url 'rules' %}">Regulamin rejsów</a>
+            <a class="btn btn-warning" href="{% url 'rodo' %}">RODO</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}

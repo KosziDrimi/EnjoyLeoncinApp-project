@@ -1,0 +1,64 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+
+    <h5>Lista wszystkich zapytań:</h5>
+
+        <div class="row mb-4 mt-4">
+            <div class="col-md-6">
+                <a class="btn btn-warning" href="{% url 'list' opt='new' %}">Nowe</a>
+                <a class="btn btn-warning" href="{% url 'list' opt='old' %}">Niepotwierdzone</a>
+                <a class="btn btn-warning" href="{% url 'list' opt='cf' %}">Potwierdzone</a>
+                <a class="btn btn-warning" href="{% url 'list' opt='past' %}">Wcześniejsze rezerwacje</a>
+            </div>
+        </div>
+
+
+        {% for res in reservations %}
+
+        <div class="row">
+            <div class="col-md-5">
+
+                <div class="card border-warning mb-3">
+                    <div class="card-header py-1"><span class="fw-bold">{{ res.user }}</span> -> ID: {{res.id}}</div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <ul class="card-text">
+                                    <li>Data: {{res.datetime|date }}</li>
+                                    <li>Godzina: {{res.datetime|time}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-outline-warning btn-sm" href="{% url 'update' res.id %}">Szczegóły</a>
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cxModal">Usuń</button>
+                            </div>
+                            <div class="modal fade" id="cxModal" tabindex="-1" aria-labelledby="cxModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body fw-bold">
+                                            Czy na pewno chcesz usunąć to zapytanie?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Nie</button>
+                                            <a class="btn btn-danger btn-sm" href="{% url 'delete' res.id %}">Tak</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+{% endblock %}

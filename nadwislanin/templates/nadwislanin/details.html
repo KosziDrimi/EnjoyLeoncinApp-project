@@ -1,0 +1,88 @@
+{% extends "nadwislanin/base.html" %}
+{% block content %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-warning mb-3" href="{% url 'list' %}">Powrót do listy</a>
+        </div>
+        <div class="col-md-3">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible py-2 text-end" role="alert">
+                <span class="fst-italic">{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+
+            <div class="card">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                <div class="card-header fw-bold">
+                    Szczegóły zapytania (ID: {{ res.id }})
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                {{ form.user|as_crispy_field }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.email|as_crispy_field }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.datetime|as_crispy_field }}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.tour|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                {{ form.feedback|as_crispy_field }}
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    {{ form.new|as_crispy_field }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ form.confirmation|as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ form.email_text_one|as_crispy_field }}
+                            <a class="btn btn-warning mt-2" href="{% url 'send_email' pk=res.id nr=1 %}">Wyślij maila</a>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form.email_text_two|as_crispy_field }}
+                            <a class="btn btn-warning mt-2" href="{% url 'send_email' pk=res.id nr=2 %}">Wyślij maila</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="col-md-5 text-end">
+            <img src="{% static 'nadwislanin/logo.jpg' %}" width="400" height="400">
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

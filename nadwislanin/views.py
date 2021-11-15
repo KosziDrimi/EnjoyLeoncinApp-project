@@ -70,12 +70,12 @@ def send_email(request, pk, nr):
 
     if nr == 1:
         send_mail('Zapytanie - rejs Nadwiślaninem', res.email_text_one,
-                  'rezerwacjenadwislanin@gmail.com', [res.email], fail_silently=False)
+                  EMAIL_HOST_USER, [res.email], fail_silently=False)
         res.new = False
 
     elif nr == 2:
         send_mail('Potwierdzenie rejsu Nadwiślaninem', res.email_text_two,
-                  'rezerwacjenadwislanin@gmail.com', [res.email], fail_silently=False)
+                  EMAIL_HOST_USER, [res.email], fail_silently=False)
         res.confirmation = True
 
     res.save()

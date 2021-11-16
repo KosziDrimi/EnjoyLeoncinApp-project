@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['rezerwacje-nadwislanin.herokuapp.com']
+ALLOWED_HOSTS = ['rezerwacje-nadwislanin.herokuapp.com', 'localhost', '127.0.0.1']
 
 # DJANGO_SETTINGS_MODULE = config('DJANGO_SETTINGS_MODULE')
 
@@ -134,13 +134,6 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/reserve/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-# EMAIL_HOST_USER = 'rezerwacjenadwislanin@gmail.com'
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

@@ -9,7 +9,6 @@ from datetime import datetime
 
 from .forms import ReservationForm, DetailsForm
 from .models import Reservation
-# from core.settings import EMAIL_HOST_USER
 
 
 def index(request):
@@ -70,12 +69,12 @@ def send_email(request, pk, nr):
 
     if nr == 1:
         send_mail('Zapytanie - rejs Nadwiślaninem', res.email_text_one,
-                  'rezerwacjenadwislanin@gmail.com', [res.email], fail_silently=False)
+                  'biuro@enjoyleoncin.pl', [res.email], fail_silently=False)
         res.new = False
 
     elif nr == 2:
         send_mail('Potwierdzenie rejsu Nadwiślaninem', res.email_text_two,
-                  'rezerwacjenadwislanin@gmail.com', [res.email], fail_silently=False)
+                  'biuro@enjoyleoncin.pl', [res.email], fail_silently=False)
         res.confirmation = True
 
     res.save()

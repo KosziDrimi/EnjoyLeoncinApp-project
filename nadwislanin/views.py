@@ -9,7 +9,7 @@ from datetime import datetime
 
 from .forms import ReservationForm, DetailsForm
 from .models import Reservation
-from core.settings import EMAIL_HOST_USER
+# from core.settings import EMAIL_HOST_USER
 
 
 def index(request):
